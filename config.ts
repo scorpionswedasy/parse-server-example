@@ -6,15 +6,18 @@ export const config = {
   cloud: () => import('./cloud/main.js'),
   appId: process.env.APP_ID || 'APP1',
   clientKey: process.env.CLIENT_KEY || 'CLIENT1',
-  masterKey: process.env.MASTER_KEY || 'MASTER1', //Add your master key here. Keep it secret!
-  serverURL: process.env.SERVER_URL || 'https://parse-server-example-vs24.onrender.com/parse', // Don't forget to change to https if needed
+  masterKey: process.env.MASTER_KEY || 'MASTER1', // Keep it secret!
+  serverURL: process.env.SERVER_URL || 'https://parse-server-example-vs24.onrender.com/parse',
+  
+  // السماح بإنشاء كلاسات من الـ client
+  allowClientClassCreation: true,
+
   liveQuery: {
     classNames: ['Posts', 'Comments'], // List of classes to support for query subscriptions
   },
   schema: {
-  definitions: schemaDefinitions,
-  lockSchemas: false,
-  strict: false,
-},
-
+    definitions: schemaDefinitions,
+    lockSchemas: false, // للسماح بتعديل الكلاسات بعد إنشائها
+    strict: false,      // للسماح بإضافة حقول جديدة بدون خطأ
+  },
 };
