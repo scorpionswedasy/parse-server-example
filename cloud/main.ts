@@ -1,5 +1,5 @@
 // cloud/main.ts
-import Parse from 'parse/node';
+import Parse from 'parse/node.js';
 
 interface AddFieldParams {
   fieldName: string;
