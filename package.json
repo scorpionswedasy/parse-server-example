@@ -25,6 +25,7 @@
     "express": "5.2.1",
     "parse": "7.1.2",
     "parse-server": "8.5.0"
+    "parse-dashboard": "^5.0.0",
   },
   "type": "module",
   "devDependencies": {
