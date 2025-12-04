@@ -11,10 +11,9 @@ export const config = {
     classNames: ['Posts', 'Comments'], // List of classes to support for query subscriptions
   },
   schema: {
-    definitions: schemaDefinitions,
-    lockSchemas: false,
-    strict: false,
-    recreateModifiedFields: true,
-    deleteExtraFields: false,
-  },
+  definitions: schemaDefinitions,
+  lockSchemas: false,
+  strict: false,
+},
+
 };
