@@ -12,9 +12,9 @@ export const config = {
   },
   schema: {
     definitions: schemaDefinitions,
-    lockSchemas: true,
-    strict: true,
-    recreateModifiedFields: false,
+    lockSchemas: false,
+    strict: false,
+    recreateModifiedFields: true,
     deleteExtraFields: false,
   },
 };
