@@ -1,12 +1,10 @@
-// index.ts
 import express from 'express';
 import { ParseServer } from 'parse-server';
 import ParseDashboard from 'parse-dashboard';
 import path from 'path';
 import http from 'http';
-import { config } from './config';
+import { config } from './config'; // بدون .js
 
-const __dirname = path.resolve();
 const app = express();
 const port = process.env.PORT || 1337;
 const mountPath = process.env.PARSE_MOUNT || '/parse';
@@ -17,12 +15,10 @@ app.use('/public', express.static(path.join(__dirname, '/public')));
 // Async IIFE لتشغيل Parse Server بأمان
 (async () => {
   try {
-    // إنشاء Parse Server
     const server = new ParseServer(config);
     await server.start();
     app.use(mountPath, server.app);
 
-    // إعداد Parse Dashboard
     const dashboard = new ParseDashboard({
       apps: [
         {
@@ -33,30 +29,25 @@ app.use('/public', express.static(path.join(__dirname, '/public')));
         },
       ],
       users: [
-        { user: 'admin', pass: '123456' }, // عدّل اسم المستخدم وكلمة المرور
+        { user: 'admin', pass: '123456' },
       ],
     }, { allowInsecureHTTP: true });
 
     app.use('/dashboard', dashboard);
 
-    // صفحات اختبار
     app.get('/', (req, res) => {
-      res.status(200).send('I dream of being a website. Please star the parse-server repo on GitHub!');
+      res.status(200).send('I dream of being a website.');
     });
 
     app.get('/test', (req, res) => {
       res.sendFile(path.join(__dirname, '/public/test.html'));
     });
 
-    // تشغيل السيرفر
     const httpServer = http.createServer(app);
     httpServer.listen(port, () => {
       console.log(`parse-server-example running on port ${port}.`);
-      console.log(`Visit http://localhost:${port}/test`);
-      console.log(`Visit http://localhost:${port}/dashboard`);
     });
 
-    // تفعيل Live Query
     await ParseServer.createLiveQueryServer(httpServer);
 
   } catch (err) {
