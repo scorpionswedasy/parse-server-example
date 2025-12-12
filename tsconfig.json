@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "target": "ES2022",                 // دعم الميزات الحديثة للغة
-    "module": "commonjs",               // مناسب للـ Node و Parse Server
+    "target": "ES2022",
+    "module": "commonjs",
     "moduleResolution": "Node",
-    "rootDir": "./",                     // مصدر ملفات TypeScript
-    "outDir": "./dist",                  // مجلد الملفات الناتجة بعد التحويل
-    "strict": true,                      // تفعيل التحقق الكامل من الأنواع
-    "esModuleInterop": true,             // للسماح بالاستيراد الافتراضي من CommonJS
+    "rootDir": "./",
+    "outDir": "./dist",
+    "strict": true,
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
@@ -14,7 +14,7 @@
     "noImplicitAny": false
   },
   "include": [
-    "**/*.ts"                             // تحويل كل ملفات TypeScript في المشروع
+    "**/*.ts"
   ],
   "exclude": [
     "node_modules",
