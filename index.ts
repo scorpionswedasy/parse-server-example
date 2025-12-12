@@ -28,4 +28,38 @@ app.use('/public', express.static(path.join(__dirname, '/public')));
         {
           appId: process.env.APP_ID || 'APP1',
           masterKey: process.env.MASTER_KEY || 'MASTER1',
-          serverURL: process.env.SERVER_URL || 'htt_
+          serverURL: process.env.SERVER_URL || 'https://parse-server-example-vs24.onrender.com/parse',
+          appName: 'My App',
+        },
+      ],
+      users: [
+        { user: 'admin', pass: '123456' }, // عدّل اسم المستخدم وكلمة المرور
+      ],
+    }, { allowInsecureHTTP: true });
+
+    app.use('/dashboard', dashboard);
+
+    // صفحات اختبار
+    app.get('/', (req, res) => {
+      res.status(200).send('I dream of being a website. Please star the parse-server repo on GitHub!');
+    });
+
+    app.get('/test', (req, res) => {
+      res.sendFile(path.join(__dirname, '/public/test.html'));
+    });
+
+    // تشغيل السيرفر
+    const httpServer = http.createServer(app);
+    httpServer.listen(port, () => {
+      console.log(`parse-server-example running on port ${port}.`);
+      console.log(`Visit http://localhost:${port}/test`);
+      console.log(`Visit http://localhost:${port}/dashboard`);
+    });
+
+    // تفعيل Live Query
+    await ParseServer.createLiveQueryServer(httpServer);
+
+  } catch (err) {
+    console.error('Error starting Parse Server:', err);
+  }
+})();
