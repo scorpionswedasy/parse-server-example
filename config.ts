@@ -1,9 +1,9 @@
-import path = require('path');
+const path = require('path');
 const __dirname = path.resolve();
 
-export const config = {
+module.exports.config = {
   databaseURI: process.env.DATABASE_URI || 'mongodb://localhost:27017/dev',
-  cloud: path.join(__dirname, 'dist/cloud/main.js'), // بعد التحويل
+  cloud: path.join(__dirname, 'dist/cloud/main.js'),
   appId: process.env.APP_ID || 'APP1',
   clientKey: process.env.CLIENT_KEY || 'CLIENT1',
   masterKey: process.env.MASTER_KEY || 'MASTER1',
@@ -12,7 +12,5 @@ export const config = {
   enforcePrivateUsers: false,
   allowClientClassUpdate: true,
   enableAnonymousUsers: true,
-  liveQuery: {
-    classNames: ['Posts', 'Comments']
-  }
+  liveQuery: { classNames: ['Posts', 'Comments'] }
 };
