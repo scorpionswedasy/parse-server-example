@@ -1,9 +1,9 @@
-import express = require('express');
-import { ParseServer } from 'parse-server';
-import ParseDashboard = require('parse-dashboard');
-import path = require('path');
-import http = require('http');
-import { config } from './config';
+const express = require('express');
+const { ParseServer } = require('parse-server');
+const ParseDashboard = require('parse-dashboard');
+const path = require('path');
+const http = require('http');
+const { config } = require('./config');
 
 const __dirname = path.resolve();
 const app = express();
