@@ -1,9 +1,8 @@
 import path from 'path';
-const __dirname = path.resolve();
 
 export const config = {
   databaseURI: process.env.DATABASE_URI || 'mongodb://localhost:27017/dev',
-  cloud: path.join(__dirname, 'dist/cloud/main.js'), // ملف JS بعد التحويل
+  cloud: path.join(__dirname, 'dist/cloud/main.js'),
   appId: process.env.APP_ID || 'APP1',
   clientKey: process.env.CLIENT_KEY || 'CLIENT1',
   masterKey: process.env.MASTER_KEY || 'MASTER1',
@@ -16,7 +15,7 @@ export const config = {
     classNames: ['Posts', 'Comments']
   },
   schema: {
-    definitions: require('./dist/cloud/schema.js').schemaDefinitions,
+    definitions: require(path.join(__dirname, 'dist/cloud/schema.js')).schemaDefinitions,
     lockSchemas: false,
     strict: false
   }
