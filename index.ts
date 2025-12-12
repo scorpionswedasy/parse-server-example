@@ -4,7 +4,7 @@ import { ParseServer } from 'parse-server';
 import ParseDashboard from 'parse-dashboard';
 import path from 'path';
 import http from 'http';
-import { config } from './config.js';
+import { config } from './config';
 
 const __dirname = path.resolve();
 const app = express();
